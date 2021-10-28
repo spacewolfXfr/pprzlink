@@ -455,7 +455,15 @@
       <field name="groundspeed_sp" type="float" unit="m/s"/>
     </message>
 
-    <!-- 55 is free -->
+    <message name="APPROACH_MOVING_TARGET" id="55">
+      <field name="ref_pos_x" type="float" unit="m"/>
+      <field name="ref_pos_y" type="float" unit="m"/>
+      <field name="ref_pos_z" type="float" unit="m"/>
+      <field name="ref_vel_x" type="float" unit="m/s"/>
+      <field name="ref_vel_y" type="float" unit="m/s"/>
+      <field name="ref_vel_z" type="float" unit="m/s"/>
+      <field name="distance" type="float" unit="m"/>
+    </message>
 
     <message name="BARO_ETS" id="56">
       <field name="adc" type="uint16"/>
