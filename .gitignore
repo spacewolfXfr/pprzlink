@@ -20,6 +20,7 @@
 /build
 /var
 /.idea/
+*.egg-info/
 
 # Eclipse IDE settings files
 .cproject

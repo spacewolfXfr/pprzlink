@@ -238,13 +238,10 @@
     </message>
 
     <message name="RANGEFINDER" id="29">
-      <field name="range" type="uint16" unit="cm"/>
-      <field name="z_dot" type="float" unit="m/s"/>
-      <field name="z_dot_sum_err" type="float" unit="m/s"/>
-      <field name="z_dot_setpoint" type="float" unit="m/s"/>
-      <field name="z_sum_err" type="float" unit="m/s"/>
-      <field name="z_setpoint" type="float" unit="m"/>
-      <field name="flying" type="uint8" unit="bool"/>
+      <description>Return measured distance of rangefinder sensors</description>
+      <field name="id" type="uint8">Sensor ID</field>
+      <field name="raw" type="uint16">Uncompensated nor adjusted raw distance value from sensor</field>
+      <field name="distance" type="float" unit="m"/>
     </message>
 
     <message name="DATALINK_REPORT" id="30">
@@ -1787,7 +1784,6 @@
       <field name="G1_roll"   type="float[]" unit="none"/>
       <field name="G1_pitch"  type="float[]" unit="none"/>
       <field name="G1_yaw"    type="float[]" unit="none"/>
-      <field name="G1_thrust" type="float[]" unit="none"/>
       <field name="G2"        type="float[]" unit="none"/>
     </message>
 
@@ -1894,7 +1890,11 @@
       <field name="actuators_t4_rolling_msg_out_id" type="uint8">T4 output Rolling message ID</field>
      </message>
   
-    <!-- 192 is free -->
+    <message name="EFF_MAT_STAB_THRUST" id="192">
+      <field name="G1_x" type="float[]" unit="none"></field>
+      <field name="G1_y" type="float[]" unit="none"></field>
+      <field name="G1_z" type="float[]" unit="none"></field>
+    </message>
 
     <message name="AHRS_LKF" id="193">
       <field name="phi"   type="float" unit="rad"   alt_unit="deg"   alt_unit_coef="57.29578" />
@@ -2796,6 +2796,23 @@
       <field name="y" type="float" unit="m">Y position/velocity in NED</field>
       <field name="z" type="float" unit="m">Z position/velocity in NED (negative altitude)</field>
       <field name="yaw" type="float" unit="rad" alt_unit="deg">yaw/rate setpoint</field>
+    </message>
+
+    <message name="GUIDED_FULL_NED" id="41" link="forwarded">
+      <description>
+        Set vehicle position, velocity and accel in NED, with heading angle.
+      </description>
+      <field name="x" type="float" unit="m">X position in NED</field>
+      <field name="y" type="float" unit="m">Y position in NED</field>
+      <field name="z" type="float" unit="m">Z position in NED (negative altitude)</field>
+      <field name="vx" type="float" unit="m">X velocity in NED</field>
+      <field name="vy" type="float" unit="m">Y velocity in NED</field>
+      <field name="vz" type="float" unit="m">Z velocity in NED</field>
+      <field name="ax" type="float" unit="m">X acceleration in NED</field>
+      <field name="ay" type="float" unit="m">Y acceleration in NED</field>
+      <field name="az" type="float" unit="m">Z acceleration in NED</field>
+      <field name="heading" type="float" unit="rad" alt_unit="deg">yaw setpoint</field>
+      <field name="ac_id" type="uint8"/>
     </message>
 
     <message name="WINDTURBINE_STATUS" id="50" link="broadcasted">
